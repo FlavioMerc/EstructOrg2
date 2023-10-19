@@ -37,7 +37,7 @@ class Clinica:
             nodo_aux = nodo_aux.siguiente
         print()
 
-    def buscarPacientesMayoresDe70(self, eliminar=True):
+    def buscarPacientesMayoresDe70(self, eliminar=False):
         if self.inicio is None:
             print("La clínica está vacía")
             return
@@ -47,7 +47,7 @@ class Clinica:
         paciente_anterior = None
 
         while nodo_actual:
-            if nodo_actual.edad  <= 70:
+            if nodo_actual.edad  >= 70:
                 pacientes_mayores_de_70.append(nodo_actual.edad)
                 if eliminar:
                     if paciente_anterior:
@@ -64,21 +64,13 @@ class Clinica:
 
             nodo_actual = nodo_actual.siguiente
 
-        if pacientes_mayores_de_70:
-            print("Edades de pacientes de 70 años o más:")
-            for edad in pacientes_mayores_de_70:
-                print(edad, end=", ")
-            print()
-        else:
-            print("No hay pacientes de 70 años o más en la clínica")
-
         if (pacientes_mayores_de_70):
             clinica.eliminarPaciente()
 
 clinica = Clinica()
 
-clinica.agregarPaciente( 45)
-clinica.agregarPaciente( 71)
+clinica.agregarPaciente(70)
+clinica.agregarPaciente(30)
 clinica.agregarPaciente(60)
 
 clinica.listarPacientes()
